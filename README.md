@@ -1,6 +1,6 @@
 # React - Native Apllication
 
-![UTCH](https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.wikipedia.org%2Fwiki%2FUniversidad_Tecnol%25C3%25B3gica_de_Chihuahua&psig=AOvVaw3T4VzNy_y0GHYagFBDsOaA&ust=1627691572334000&source=images&cd=vfe&ved=0CAcQjRxqFwoTCIjJ_KPGifICFQAAAAAdAAAAABAD)
+![UTCH](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyewe0nGTvJhlwu_ihY6tleYpxMjJzqkcP3OSR-ukpAuGFjwkdKn-4ihLGWMbs9Q_Y8jw&usqp=CAU)
 
 _Information Technologies: Multiplatform Software Development_
 
