@@ -29,6 +29,36 @@ class BadgesScreen extends React.Component {
     handlePress = item =>{
         this.props.navigation.navigate('BadgesDetail', {item});
     };
+    //Edit the badge
+    handleEdit = item => {
+        this.props.navigation.navigate('BadgesEdit', {item});
+    }
+    //Delete a badge
+    handleDelete = item => {
+        //An alert appears asking if we are sure to do the operation
+        Alert.alert('Are you sure?', `Do you really want to delete ${item.name}'s badge?\n\nThis process cannot be undone`,
+            [
+                {
+                    //Button to cancel the operation
+                    text:'Cancel',
+                    style: 'cancel',
+                },
+                {
+                    //Button to continue and delete the badge
+                    text: 'Delete',
+                    onPress: async () =>{
+                        this.setState({loading:true, badges:undefined});
+                        await Http.instance.remove(item._id);
+                        this.fetchdata();
+                    },
+                    style:'destructive',
+                },
+            ],
+            {
+                cancelable: true,
+            },
+        );
+    }
     render() {
         //Get the constant of the badges and the loading simbol
         const {badges, loading} = this.state;
@@ -53,8 +83,14 @@ class BadgesScreen extends React.Component {
                             item={item}
                             //When it is pressed, we will see the user's details
                             onPress={() => this.handlePress(item)}
+                            //here it will allow to edit the badge
+                            onEdit={() => this.handleEdit(item)}
+                            //And here it will start the process to delete the badge
+                            onDelete={() => this.handleDelete(item)}
                         />
                     )}
+                    //Define the extraction of the key IDs
+                    keyExtractor={(item, index) => index.toString()}
                 />
             </View>
         );
