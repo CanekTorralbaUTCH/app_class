@@ -8,12 +8,17 @@ class BadgesScreen extends React.Component {
     //Default state of the badges
     state = {
         loading: false,
-        badges: [],
+        badges: undefined,
     };
     //Actions called immediately after a component is mounted.
     componentDidMount() {
         this.fetchdata();
+        this.setFetchInterval();
     }
+    //Interval of time that takes to fetch data
+    setFetchInterval = () =>{
+        this.interval = setInterval(this.fetchdata,3000);
+    };
     //Get all data from the badges
     fetchdata = async () => {
         //Start loading
@@ -59,19 +64,28 @@ class BadgesScreen extends React.Component {
             },
         );
     }
+    componentWillUnMount() {
+        clearInterval(this.interval);
+    }
+    //Render the screen
     render() {
         //Get the constant of the badges and the loading simbol
         const {badges, loading} = this.state;
-        return (
-            <View style={[styles.container, styles.horizontal]}>
-                {loading ? (
-                    //While it is loading, Displays a circular loading indicator.
+        //If the screen is still loading and has not fetched any badges
+        if(loading===true && !badges){
+            return(
+                <View style={[styles.container, styles.horizontal]}>
+                    {/* While it is loading, Displays a circular loading indicator */}
                     <ActivityIndicator
                         style={styles.loader}
-                        color="43FF0D"
+                        color="#43FF0D"
                         size="large"
                     />
-                ) : null}
+                </View>
+            );
+        }
+        return (
+            <View style={[styles.container, styles.horizontal]}>
                 <FlatList
                 //Display the list of badges
                     style={styles.list} 
