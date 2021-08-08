@@ -44,7 +44,14 @@ class BadgesScreen extends React.Component {
                     style={styles.list} 
                     data={badges}
                     //Render each one of the user's badges
-                    renderItem={({item})=> <BadgesItem key={item._id} item={item} />}
+                    renderItem={({item}) => (
+                        <BadgesItem 
+                            key={item._id} 
+                            item={item}
+                            //When it is pressed, we will see the user's details
+                            onPress={() => this.handlePress(item)}
+                        />
+                    )}
                 />
             </View>
         );
