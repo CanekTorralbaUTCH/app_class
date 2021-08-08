@@ -1,3 +1,4 @@
+//Basic colors that are going to be used on the app
 const Colors = {
     blackPearl: '#20252c',
     charade: '#272c35',
