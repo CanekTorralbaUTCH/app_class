@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, ActivityIndicator, StyleSheet, FlatList, StatusBar, Text, Alert,} from 'react-native'
+import BadgesItem from './BadgesItem';
 import Colors from '../../res/Colors'
 import Http from '../../libs/http'
 
@@ -41,8 +42,9 @@ class BadgesScreen extends React.Component {
                 <FlatList
                 //Display the list of badges
                     style={styles.list} 
-                    data={badges} 
-                    renderItem={({item})=> <Text>{item.name}</Text>}
+                    data={badges}
+                    //Render each one of the user's badges
+                    renderItem={({item})=> <BadgesItem key={item._id} item={item} />}
                 />
             </View>
         );
