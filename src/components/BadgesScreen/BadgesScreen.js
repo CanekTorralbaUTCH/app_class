@@ -25,7 +25,10 @@ class BadgesScreen extends React.Component {
         //Set the loadin and the badges
         this.setState({loading: false, badges: response});
     };
-
+    //If pressed it goes to the details of the user's badge
+    handlePress = item =>{
+        this.props.navigation.navigate('BadgesDetail', {item});
+    };
     render() {
         //Get the constant of the badges and the loading simbol
         const {badges, loading} = this.state;
