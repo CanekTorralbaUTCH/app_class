@@ -25,8 +25,6 @@ class BadgesScreen extends React.Component {
         this.setState({loading: true});
         //Await for the response from http of the badges
         let response = await Http.instance.get_all();
-        //Reverses the contntens of the badge
-        response = response.reverse();
         //Set the loadin and the badges
         this.setState({loading: false, badges: response});
     };
