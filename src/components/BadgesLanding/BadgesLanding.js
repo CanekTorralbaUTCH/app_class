@@ -1,5 +1,4 @@
 import React from 'react';
-
 //Specific import from the react-native library
 import {
     View,
@@ -18,7 +17,10 @@ const imageBackground = {
 
 //Badge that shows at the start of the app 
 class BadgeLanding extends React.Component{
-    handlePress = () => {};
+    //Screen to jump is "Badges"
+    handlePress = () => {
+        this.props.navigation.navigate('Badges');
+    };
 
     render(){
         return(
