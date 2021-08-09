@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import BadgesStack from './BadgesStack'
 import Colors from '../../res/Colors'
+import FavoriteStack from '../Favorites/FavoritesStack'
 
 //Type of Tab that is going to be, this time it will be located on top of the screen
 const Tabs = createMaterialTopTabNavigator();
@@ -32,27 +33,16 @@ const BadgesTabNavigator = () =>{
                     )
                 }}
             />
-            {/* Example of tab 2 */}
+            {/* Tab to the screen where the favorite badges are */}
             <Tabs.Screen 
-                name='Badges2'
-                component={BadgesStack}
-                options={{
-                    tabBarIcon: ({size, color}) => (
-                        <Image style={{tintColor: color, width:size, height: size}}
-                        source={require('../../assets/edit_icon.png')} />
-                    )
-                }}
-            />
-            {/* Example of tab 3 */}
-            <Tabs.Screen 
-                name='Badges3'
-                component={BadgesStack}
-                options={{
-                    tabBarIcon: ({size, color}) => (
-                        <Image style={{tintColor: color, width:size, height: size}}
-                        source={require('../../assets/delete_icon.png')} />
-                    )
-                }}
+            name='Favorites'
+            component={FavoriteStack}
+            options={{
+                tabBarIcon: ({size, color}) => (
+                    <Image style={{tintColor: color, width:size, height: size}}
+                    source={require('../../assets/notFavorite.png')} />
+                )
+            }}
             />
         </Tabs.Navigator>
     );
