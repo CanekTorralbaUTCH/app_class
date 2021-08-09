@@ -13,7 +13,21 @@ class BadgesScreen extends React.Component {
     //Actions called immediately after a component is mounted.
     componentDidMount() {
         this.fetchdata();
-        this.setFetchInterval();
+        this.focusEvent();
+        this.blurEvent();
+    }
+    //Set the interval
+    focusEvent = () => {
+        this.focusListener = this.props.navigation.addListener('focus', () =>{
+            this.setFetchInterval();
+        });
+        
+    }
+    //Clear the interval
+    blurEvent = () => {
+        this.blurListener = this.props.navigation.addListener('blur', () =>{
+            clearInterval(this.interval);
+        });
     }
     //Interval of time that takes to fetch data
     setFetchInterval = () =>{
@@ -65,7 +79,8 @@ class BadgesScreen extends React.Component {
         );
     }
     componentWillUnMount() {
-        clearInterval(this.interval);
+        this.focusListener();
+        this.blurListener();
     }
     //Render the screen
     render() {
