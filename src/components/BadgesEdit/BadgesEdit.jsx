@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
     content:{
         flex:1,
         margin: 20,
+        marginTop: 30,
         width:'90%',
         height: '90%',
         backgroundColor: Colors.white,
