@@ -5,7 +5,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import BadgesStack from './BadgesStack'
 import Colors from '../../res/Colors'
 
-const Tabs = createMaterialTopTabNavigator();
+const Tabs = createBottomTabNavigator();
 //Badges screens
 const BadgesTabNavigator = () =>{
     return(
