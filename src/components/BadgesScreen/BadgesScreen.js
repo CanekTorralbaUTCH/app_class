@@ -4,8 +4,8 @@ import BadgesItem from './BadgesItem';
 import Loader from '../../Generics/Loader';
 import Colors from '../../res/Colors'
 import Http from '../../libs/http'
-import { TapGestureHandler } from 'react-native-gesture-handler';
 import BadgesSearch from './BadgesSearch';
+import Storage from '../../libs/storage';
 
 class BadgesScreen extends React.Component {
     //Default state of the badges
@@ -88,6 +88,8 @@ class BadgesScreen extends React.Component {
                     onPress: async () =>{
                         this.setState({loading:true, badges:undefined});
                         await Http.instance.remove(item._id);
+                        let  key = `favorite-${item._id}`
+                        await Storage.instance.remove(key);
                         this.fetchdata();
                     },
                     style:'destructive',
