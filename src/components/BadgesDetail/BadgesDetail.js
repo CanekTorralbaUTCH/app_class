@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     badge:{
         flex:1,
         margin: 20,
-        marginTop:54,
+        marginTop: 50,
         width:'90%',
         height: '90%',
         backgroundColor: Colors.white,
