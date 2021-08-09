@@ -11,10 +11,6 @@ import {
 } from 'react-native';
 import Colors from '../../res/Colors';
 import styles from './styles';
-//Image background constant that is connected to an url 
-const imageBackground = {
-    uri:'https://wallpapercave.com/wp/wp6699749.jpg'
-};
 //Class for the login screen
 class Login extends React.Component{
     //default state of the screen
