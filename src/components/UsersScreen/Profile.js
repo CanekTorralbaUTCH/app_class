@@ -85,15 +85,20 @@ class Profile extends React.Component {
                         <Text style={styles.username}>{user.name}  </Text>
                         <Text style={styles.age}>{user.profile.age}</Text>
                     </View>
-                    {/* User's Likes in one column */}
-                    <View style={styles.dataColumns}>
-                        <Text style={styles.dataInfo}>{badge.likes || "0K"} </Text>
-                        <Text style={styles.smallText}>Likes</Text>
-                    </View>
-                    {/* User's posts in another one */}
-                    <View style={styles.dataColumns}>
-                        <Text style={styles.dataInfo}>{badge.post || "None"} </Text>
-                        <Text style={styles.smallText}>Posts</Text>
+                    {/* User's city */}
+                    <Text style={styles.city}>{badge.city}</Text>
+                    {/* User's secondary data */}
+                    <View style={styles.data}>
+                        {/* User's Likes in one column */}
+                        <View style={styles.dataColumns}>
+                            <Text style={styles.dataInfo}>{badge.likes || "0K"} </Text>
+                            <Text style={styles.smallText}>Likes</Text>
+                        </View>
+                        {/* User's posts in another one */}
+                        <View style={styles.dataColumns}>
+                            <Text style={styles.dataInfo}>{badge.post || "None"} </Text>
+                            <Text style={styles.smallText}>Posts</Text>
+                        </View>
                     </View>
                 </View>
             </View>
@@ -157,9 +162,19 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 15
     },
-    place: {
-        color: Colors.white,
-        fontSize: 18
+    city:{
+        marginTop:10,
+        fontSize:18,
+        textAlign:'center',
+        color: Colors.zircon,
+    },
+    data:{
+        padding:20,
+        marginTop:50,
+        justifyContent: 'center',
+        flexDirection: 'row',
+        borderTopColor: 1,
+        borderColor: Colors.zircon,    
     },
     imageEdit: {
         position: 'absolute',
