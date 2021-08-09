@@ -19,13 +19,13 @@ const imageBackground = {
 class BadgeLanding extends React.Component{
     //Screen to jump is "Badges"
     handlePress = () => {
-        this.props.navigation.navigate('Badges');
+        this.props.navigation.replace('Badges');
     };
 
     render(){
         return(
         <View style={styles.container}>
-            {/*State the background color as transparent */}
+            {/*Status bar for the screen */}
             <StatusBar backgroundColor="transparent" translucent={true} />
             {/* Image background with a specific style sheet */}
             <ImageBackground source={imageBackground} style={styles.image}>
