@@ -57,7 +57,7 @@ class Favorites extends React.Component{
                 <StatusBar backgroundColor="transparent" translucent={true} />
                 <ActivityIndicator
                     style={exampleStyles.loader}
-                    color="#43FF0D"
+                    color={Colors.green}
                     size="large" />
             </View>
         }
