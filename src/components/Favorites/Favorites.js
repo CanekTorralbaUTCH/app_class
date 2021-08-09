@@ -25,12 +25,13 @@ class Favorites extends React.Component{
     }
     //Get the badges that are marked as favorites
     getFavorites =  async ()  => {
+        this.setState({loading: true, badges: undefined});
         try{
             const allKeys = await Storage.instance.getAllKeys();
             const key = allKeys.filter( key => key.includes('favorite-'));
             const favs = await Storage.instance.multiGet(key);
             const favorites = favs. map( fav => JSON.parse(fav[1]))
-            this.setState({badges: favorites});
+            this.setState({loading: true, badges: undefined});
         }catch(err){
             console.log('get favorites err', err);
         }
