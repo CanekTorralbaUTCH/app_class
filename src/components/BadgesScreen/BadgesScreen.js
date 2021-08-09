@@ -3,12 +3,15 @@ import {View, ActivityIndicator, StyleSheet, FlatList, StatusBar, Text, Alert,} 
 import BadgesItem from './BadgesItem';
 import Colors from '../../res/Colors'
 import Http from '../../libs/http'
+import { TapGestureHandler } from 'react-native-gesture-handler';
+import BadgesSearch from './BadgesSearch';
 
 class BadgesScreen extends React.Component {
     //Default state of the badges
     state = {
         loading: false,
         badges: undefined,
+        badgeCopy: undefined,
     };
     //Actions called immediately after a component is mounted.
     componentDidMount() {
@@ -42,7 +45,7 @@ class BadgesScreen extends React.Component {
         //Await for the response from http of the badges
         let response = await Http.instance.get_all();
         //Set the loadin and the badges
-        this.setState({loading: false, badges: response});
+        this.setState({loading: false, badges: response, badgeCopy: response});
     };
     //If pressed it goes to the details of the user's badge
     handlePress = item =>{
@@ -52,6 +55,22 @@ class BadgesScreen extends React.Component {
     handleEdit = item => {
         this.props.navigation.navigate('BadgesEdit', {item});
     }
+    //part of the search bar that allows to pop up badges that coincide qith the value
+    handleChange = () =>{
+        const {badgesCopy} = this.state;
+        //Get the badges filtered from the string of the search bar
+        const badgesFiltered = badgesCopy.filter(badge => {
+            return badge.name.toLowerCase().includes(query.toLowerCase());
+        });
+
+        this.setState({badges: badgesFiltered});
+        //If the query has any changes, clear and fetch
+        if(query){
+            clearInterval(this.interval);
+        }else{
+            this.setFetchInterval();
+        }
+    };
     //Delete a badge
     handleDelete = item => {
         //An alert appears asking if we are sure to do the operation
@@ -101,8 +120,10 @@ class BadgesScreen extends React.Component {
         }
         return (
             <View style={[styles.container, styles.horizontal]}>
-                {/*Status bar for the screen */}
+                {/* Status bar for the screen */}
                 <StatusBar backgroundColor="transparent" translucent={true} />
+                {/* Search bar above the list */}
+                <BadgesSearch onChange={this.handleChange}/>
                 <FlatList
                 //Display the list of badges
                     style={styles.list} 
