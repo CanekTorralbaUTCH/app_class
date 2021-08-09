@@ -17,9 +17,9 @@ const imageBackground = {
 
 //Badge that shows at the start of the app 
 class BadgeLanding extends React.Component{
-    //Screen to jump is "Badges"
+    //Screen to jump to the Tab Navigator
     handlePress = () => {
-        this.props.navigation.replace('Badges');
+        this.props.navigation.replace('BadgesTabNavigator');
     };
 
     render(){
