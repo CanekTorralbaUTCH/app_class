@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, ActivityIndicator, StyleSheet, FlatList, StatusBar, Text, Alert,} from 'react-native'
 import BadgesItem from './BadgesItem';
+import Loader from '../../Generics/Loader';
 import Colors from '../../res/Colors'
 import Http from '../../libs/http'
 import { TapGestureHandler } from 'react-native-gesture-handler';
@@ -107,16 +108,7 @@ class BadgesScreen extends React.Component {
         const {badges, loading} = this.state;
         //If the screen is still loading and has not fetched any badges
         if(loading===true && !badges){
-            return(
-                <View style={[styles.container, styles.horizontal]}>
-                    {/* While it is loading, Displays a circular loading indicator */}
-                    <ActivityIndicator
-                        style={styles.loader}
-                        color="#43FF0D"
-                        size="large"
-                    />
-                </View>
-            );
+            <Loader />
         }
         return (
             <View style={[styles.container, styles.horizontal]}>
