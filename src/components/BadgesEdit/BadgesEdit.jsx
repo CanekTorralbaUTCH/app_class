@@ -5,7 +5,7 @@ import {
     StyleSheet,
     TextInput,
     ScrollView,
-    TouvhableOpacity,
+    TouchableOpacity,
     Image,
     ActivityIndicator,
     TouchableOpacity,
@@ -28,7 +28,7 @@ class BadgesEdit extends react.Component{
     getBadge = () => {
         const {item} = this.props.route.params;
         this.setState({badge: item});
-        this.props.navigation.setOptions({title: `Edit ${item.name}`});
+        this.props.navigation.setOptions({title: `${item.name}`});
     };
     //Here we can submit the changes on a badge
     handleSubmit = async () => {
