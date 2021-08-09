@@ -21,6 +21,8 @@ class BadgesScreen extends React.Component {
     };
     //Get all data from the badges
     fetchdata = async () => {
+        //Small message while the action is in procces
+        console.log("Fetching data");
         //Start loading
         this.setState({loading: true});
         //Await for the response from http of the badges
@@ -84,6 +86,8 @@ class BadgesScreen extends React.Component {
         }
         return (
             <View style={[styles.container, styles.horizontal]}>
+                {/*Status bar for the screen */}
+                <StatusBar backgroundColor="transparent" translucent={true} />
                 <FlatList
                 //Display the list of badges
                     style={styles.list} 
