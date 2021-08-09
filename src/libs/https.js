@@ -50,6 +50,10 @@ class Http {
             //Search for the badge's ID and enter the changes you want
             let request = await fetch(`${URLS.badges_url}/_id:${badgeId}/`,{
                 method:'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
                 body:JSON.stringify(body),
             });
             let response = await request.json()
