@@ -6,6 +6,7 @@ import {
     FlatList,
     StatusBar,
 } from 'react-native'
+import Loader from '../../Generics/Loader'
 import Colors from '../../res/Colors'
 import Storage from '../../libs/storage'
 import exampleStyles from '../../styles/example'
@@ -53,13 +54,7 @@ class Favorites extends React.Component{
         const{badges, loading} = this.state
         //If it is still loading and there are no badges, we see a status bar
         if(loading === true && !badges){
-            <View style={[exampleStyles.container, exampleStyles.horizontal]}>
-                <StatusBar backgroundColor="transparent" translucent={true} />
-                <ActivityIndicator
-                    style={exampleStyles.loader}
-                    color={Colors.green}
-                    size="large" />
-            </View>
+            <Loader />
         }
         //Once rendered, return the correct badges
         return(
