@@ -22,8 +22,6 @@ const BadgesStack = () => {
                 },
                 headerTintColor: Colors.white,
         }}>
-            {/* Here we have the badge of the Landing page */}
-            <Stack.Screen name="Landing" component={BadgeLanding} options={{headerShown: false}}/>
             {/* Here we have the the screen for the user's badges */}
             <Stack.Screen name="Badges" component={BadgesScreen}/>
             {/* Here we have the the screen for the user's details */}
